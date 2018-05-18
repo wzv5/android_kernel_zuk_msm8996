@@ -5004,8 +5004,8 @@ eHalStatus sme_GetConfigParam(tHalHandle hHal, tSmeConfigParams *pParam)
               pMac->roam.configParam.sta_roam_policy.dfs_mode;
       pParam->csrConfig.sta_roam_policy_params.skip_unsafe_channels =
               pMac->roam.configParam.sta_roam_policy.skip_unsafe_channels;
-
-
+      pParam->csrConfig.gStaLocalEDCAEnable =
+              pMac->roam.configParam.gStaLocalEDCAEnable;
       sme_ReleaseGlobalLock( &pMac->sme );
    }
 
@@ -9194,7 +9194,7 @@ eHalStatus sme_8023MulticastList (tHalHandle hHal, tANI_U8 sessionId, tpSirRcvFl
     tCsrRoamSession         *pSession = NULL;
 
     VOS_TRACE( VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_INFO, "%s: "
-               "ulMulticastAddrCnt=%d, multicastAddr[0]=%p", __func__,
+               "ulMulticastAddrCnt=%d, multicastAddr[0]=%pK", __func__,
                pMulticastAddrs->ulMulticastAddrCnt,
                pMulticastAddrs->multicastAddr[0]);
 
